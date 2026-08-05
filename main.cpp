@@ -17,9 +17,6 @@ int main()
         cout << "=====================================\n";
         cout << "1. GEMM (Simple + Blocking)\n";
         cout << "2. CSR\n";
-        cout << "3. BFS\n";
-        cout << "4. DFS\n";
-        cout << "5. SSSP\n";
         cout << "0. Exit\n";
         cout << "\nEnter your choice: ";
         cin >> choice;
@@ -33,19 +30,7 @@ int main()
     case 2:
         runCSR();
         break;
-
-    case 3:
-        cout << "\nBFS module not implemented yet.\n";
-        break;
-
-    case 4:
-        cout << "\nDFS module not implemented yet.\n";
-        break;
-
-    case 5:
-        cout << "\nSSSP module not implemented yet.\n";
-        break;
-
+        
     case 0:
         cout << "\nExiting Program...\n";
         break;
