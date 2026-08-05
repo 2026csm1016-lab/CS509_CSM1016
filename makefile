@@ -1,10 +1,15 @@
 CXX = g++
-CXXFLAGS = -O2 -std=c++11
+CXXFLAGS = -std=c++17 -O2
 
-all: gemm
+TARGET = wrapper
 
-gemm: main.cpp gemm.cpp csr.cpp
-	$(CXX) $(CXXFLAGS) main.cpp gemm.cpp csr.cpp -o gemm
+SRC = \
+assignment_01/wrapper/wrapper.cpp \
+assignment_01/src/gemm.cpp \
+assignment_01/src/csr.cpp
+
+all:
+	$(CXX) $(CXXFLAGS) -Iassignment_01/src $(SRC) -o $(TARGET)
 
 clean:
-	del /Q gemm.exe
+	del /Q wrapper.exe

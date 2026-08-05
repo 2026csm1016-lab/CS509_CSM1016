@@ -1,5 +1,5 @@
-#include "gemm.h"
-#include "csr.h"
+#include "../src/gemm.h"
+#include "../src/csr.h"
 #include <chrono>
 #include <iostream>
 
@@ -62,15 +62,15 @@ void runGEMM()
         return;
 
     if (testChoice == 1)
-        filename = "input/gemm_test_01.txt";
+        filename = "assignment_01/tests/gemm_test_01.txt";
     else if (testChoice == 2)
-        filename = "input/gemm_test_02.txt";
+        filename = "assignment_01/tests/gemm_test_02.txt";
     else if (testChoice == 3)
-        filename = "input/gemm_test_03.txt";
+        filename = "assignment_01/tests/gemm_test_03.txt";
     else if (testChoice == 4)
-        filename = "input/gemm_test_04.txt";
+        filename = "assignment_01/tests/gemm_test_04.txt";
     else if (testChoice == 5)
-        filename = "input/gemm_test_05.txt";
+       filename = "assignment_01/tests/gemm_test_05.txt";
     else
     {
         cout << "\nInvalid Test Case!\n";
@@ -177,6 +177,7 @@ void runCSR()
     string filename;
 
     cout << "\n========== CSR ==========\n";
+    cout << "\nAlgorithm: CSR\n";
     cout << "1. graph_10.txt\n";
     cout << "2. graph_100.txt\n";
     cout << "3. graph_10000.txt\n";
@@ -191,15 +192,15 @@ void runCSR()
         return;
 
     if (testChoice == 1)
-        filename = "input/graph_10.txt";
+        filename = "assignment_01/tests/graph_10.txt";
     else if (testChoice == 2)
-        filename = "input/graph_100.txt";
+        filename = "assignment_01/tests/graph_100.txt";
     else if (testChoice == 3)
-        filename = "input/graph_10000.txt";
+       filename = "assignment_01/tests/graph_10000.txt";
     else if (testChoice == 4)
-        filename = "input/graph_50000.txt";
+       filename = "assignment_01/tests/graph_50000.txt";
     else if (testChoice == 5)
-        filename = "input/graph_100000.txt";
+       filename = "assignment_01/tests/graph_100000.txt";
     else
     {
         cout << "\nInvalid Test Case!\n";

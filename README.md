@@ -1,172 +1,195 @@
-# CS509_CSM1016 
+# CS509 Assignment 1
 
-# Name
-* Harshita Mahor
+## Team Member
+
+- CSM1016
 
 ---
 
-# Overview
+# Assignment
 
-This assignment implements:
+Implementation of:
 
-1. General Matrix Multiplication (GEMM)
-
-   * Simple GEMM
-   * Blocking GEMM
-
-2. Compressed Sparse Row (CSR) Representation
-
-   * Adjacency List Input
-   * Conversion to CSR Format
-
-The project also includes a menu-driven wrapper for selecting algorithms and test cases.
+- GEMM (Simple)
+- GEMM (Blocking)
+- CSR (Compressed Sparse Row)
 
 ---
 
 # Folder Structure
 
 ```
-.
-├── input/
-│   ├── gemm_test_01.txt
-│   ├── gemm_test_02.txt
-│   ├── gemm_test_03.txt
-│   ├── gemm_test_04.txt
-│   ├── gemm_test_05.txt
+assignment_01/
+│
+├── src/
+│   ├── csr.cpp
+│   ├── csr.h
+│   ├── gemm.cpp
+│   ├── gemm.h
+│   ├── generate_graph_tests.cpp
+│   └── generate_gemm_tests.cpp
+│
+├── tests/
 │   ├── graph_10.txt
 │   ├── graph_100.txt
 │   ├── graph_10000.txt
 │   ├── graph_50000.txt
-│   └── graph_100000.txt
+│   ├── graph_100000.txt
+│   ├── gemm_test_01.txt
+│   ├── gemm_test_02.txt
+│   ├── gemm_test_03.txt
+│   ├── gemm_test_04.txt
+│   └── gemm_test_05.txt
 │
-├── main.cpp
-├── gemm.cpp
-├── gemm.h
-├── csr.cpp
-├── csr.h
-├── Makefile
-└── README.md
+└── wrapper/
+    └── wrapper.cpp
+
+README.md
+makefile
 ```
-
----
-
-# Algorithms Implemented
-
-## 1. GEMM
-
-Two implementations are provided:
-
-* Simple Matrix Multiplication
-* Blocking Matrix Multiplication
-
-Execution time for both implementations is measured separately.
-
----
-
-## 2. CSR
-
-Graph input is provided as an adjacency list.
-
-The program converts the adjacency list into Compressed Sparse Row (CSR) representation using:
-
-* rowPtr
-* colIndex
-
-The CSR conversion is treated as preprocessing.
-
----
-
-# Graph Input Format
-
-The graph input is stored as an adjacency list.
-
-Format:
-
-```
-Number_of_Vertices
-
-Number_of_Neighbours Neighbour1 Neighbour2 ...
-
-Number_of_Neighbours Neighbour1 ...
-
-...
-```
-
-Example:
-
-```
-5
-2 1 2
-2 0 3
-1 4
-1 4
-0
-```
-
----
-
-# Test Files
-
-## GEMM
-
-* gemm_test_01.txt
-* gemm_test_02.txt
-* gemm_test_03.txt
-* gemm_test_04.txt
-* gemm_test_05.txt
-
-## CSR
-
-* graph_10.txt
-* graph_100.txt
-* graph_10000.txt
-* graph_50000.txt
-* graph_100000.txt
 
 ---
 
 # Compilation
 
-Using Makefile:
+Compile manually
 
+```bash
+g++ -std=c++17 -I"assignment_01/src" assignment_01/wrapper/wrapper.cpp assignment_01/src/gemm.cpp assignment_01/src/csr.cpp -o wrapper
 ```
+
+Or using the Makefile
+
+```bash
 mingw32-make
-```
-
-or
-
-```
-make
 ```
 
 ---
 
 # Execution
 
-Run:
-
-```
-./gemm
+```bash
+./wrapper
 ```
 
-or on Windows:
+or on Windows
 
+```bash
+wrapper.exe
 ```
-gemm.exe
-```
-
-The wrapper displays a menu to select:
-
-* GEMM
-* CSR
-
-After selecting an algorithm, the desired test case can be chosen.
 
 ---
 
-# Notes
+# Algorithms
 
-* Vertex numbering follows the convention 0 to V-1.
-* CSR conversion time is not included in algorithm execution time.
-* Large matrices and graphs are not printed to the console to avoid excessive output.
-* Execution time is displayed for each algorithm.
+## GEMM (Simple)
+
+Standard triple nested-loop matrix multiplication.
+
+Time Complexity:
+
+```
+O(M × K × N)
+```
+
+---
+
+## GEMM (Blocking)
+
+Matrix multiplication using blocking to improve cache utilization.
+
+Time Complexity:
+
+```
+O(M × K × N)
+```
+
+Block Size:
+
+```
+16
+```
+
+---
+
+## CSR
+
+Converts an adjacency-list graph into Compressed Sparse Row format.
+
+Time Complexity:
+
+```
+O(V + E)
+```
+
+---
+
+# Timing
+
+Execution time includes only the algorithm execution.
+
+The following are excluded:
+
+- File reading
+- Input parsing
+- Output printing
+
+---
+
+# GEMM Results
+
+| Test File | Input Size | Expected Output | Actual Output | Simple Time | Blocking Time | Block Size | Status |
+|-----------|------------|-----------------|---------------|-------------|---------------|------------|--------|
+| gemm_test_01.txt | 2×3 and 3×2 | Correct Result Matrix | Correct | Measured | Measured | 16 | Pass |
+| gemm_test_02.txt | Larger Matrix | Correct Result Matrix | Correct | Measured | Measured | 16 | Pass |
+| gemm_test_03.txt | Large Matrix | Correct Result Matrix | Correct | Measured | Measured | 16 | Pass |
+| gemm_test_04.txt | Large Matrix | Correct Result Matrix | Correct | Measured | Measured | 16 | Pass |
+| gemm_test_05.txt | Largest Matrix | Correct Result Matrix | Correct | Measured | Measured | 16 | Pass |
+
+---
+
+# CSR Results
+
+| Test File | Vertices | Input Type | Output | Status |
+|-----------|---------:|------------|--------|--------|
+| graph_10.txt | 10 | Adjacency List | CSR Generated | Pass |
+| graph_100.txt | 100 | Adjacency List | CSR Generated | Pass |
+| graph_10000.txt | 10000 | Adjacency List | CSR Generated | Pass |
+| graph_50000.txt | 50000 | Adjacency List | CSR Generated | Pass |
+| graph_100000.txt | 100000 | Adjacency List | CSR Generated | Pass |
+
+---
+
+# Sample Output
+
+## GEMM
+
+```
+Algorithm: GEMM Simple
+
+58 64
+139 154
+
+Execution Time: <value> ms
+
+Algorithm: GEMM Blocking
+
+58 64
+139 154
+
+Execution Time: <value> ms
+```
+
+## CSR
+
+```
+Algorithm: CSR
+
+Vertices: 5
+
+rowPtr:
+0 2 4 5 6 6
+
+colIndex:
+1 2 0 3 4 4
+```
