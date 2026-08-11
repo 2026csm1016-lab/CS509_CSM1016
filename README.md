@@ -193,3 +193,108 @@ rowPtr:
 colIndex:
 1 2 0 3 4 4
 ```
+---
+
+# CS509 Assignment 2
+
+## Algorithms
+
+- Bellman-Ford
+- Floyd-Warshall
+
+Bellman-Ford uses the CSR representation from Assignment 1.
+
+Floyd-Warshall uses a dense adjacency matrix directly.
+
+---
+
+## Complexity
+
+### Bellman-Ford
+
+Time Complexity: O(V × E)
+
+Space Complexity: O(V + E)
+
+### Floyd-Warshall
+
+Time Complexity: O(V³)
+
+Space Complexity: O(V²)
+
+---
+
+## Assignment 2 Test Files
+
+### Bellman-Ford
+
+| Test File | Vertices | Edges | Source | Negative Cycle | Status |
+|---|---:|---:|---:|---|---|
+| bf_10.txt | 10 | 17 | 0 | No | Pass |
+| bf_100.txt | 100 | 197 | 0 | No | Pass |
+| bf_10000.txt | 10000 | 19997 | 0 | No | Pass |
+| bf_50000.txt | 50000 | 99997 | 0 | No | Pass |
+| bf_100000.txt | 100000 | 199997 | 0 | No | Pass |
+
+### Floyd-Warshall
+
+| Test File | Vertices | Edges | Negative Cycle | Status |
+|---|---:|---:|---|---|
+| fw_10.txt | 10 | 17 | No | Pass |
+| fw_100.txt | 100 | 197 | No | Pass |
+| fw_500.txt | 500 | 997 | No | Pass |
+| fw_1000.txt | 1000 | 1997 | No | Pass |
+| fw_2000.txt | 2000 | 3997 | No | Pass |
+
+---
+
+## Assignment 2 Results
+
+### Bellman-Ford
+
+| Test File | Expected Output | Actual Output | Execution Time | Status |
+|---|---|---|---:|---|
+| bf_10.txt | Correct shortest distances | Correct | 0 ms | Pass |
+| bf_100.txt | Correct shortest distances | Correct | 0 ms | Pass |
+| bf_10000.txt | Correct shortest distances | Correct | 0 ms | Pass |
+| bf_50000.txt | Correct shortest distances | Correct | 4.671 ms | Pass |
+| bf_100000.txt | Correct shortest distances | Correct | 9.224 ms | Pass |
+
+### Floyd-Warshall
+
+| Test File | Expected Output | Actual Output | Execution Time | Status |
+|---|---|---|---:|---|
+| fw_10.txt | Correct distance matrix | Correct | 0 ms | Pass |
+| fw_100.txt | Correct distance matrix | Correct | 0 ms | Pass |
+| fw_500.txt | Correct distance matrix | Correct | 310.523 ms | Pass |
+| fw_1000.txt | Correct distance matrix | Correct | 2493.64 ms | Pass |
+| fw_2000.txt | Correct distance matrix | Correct | 21912.6 ms | Pass |
+
+---
+
+## Cross-Check
+
+For the graph sizes where both algorithms are required, Bellman-Ford was run from every vertex and compared with the corresponding Floyd-Warshall row.
+
+| Vertices | Result |
+|---:|---|
+| 10 | Cross-check Passed |
+| 100 | Cross-check Passed |
+
+---
+
+## Negative Weight Test
+
+A separate negative-weight test was performed to verify that Bellman-Ford correctly handles negative edge weights.
+
+Result:
+
+```text
+Algorithm: Bellman-Ford
+Source: 0
+0 0
+1 5
+2 7
+3 13
+4 22
+Negative cycle: none
