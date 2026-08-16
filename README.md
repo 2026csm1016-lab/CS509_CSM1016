@@ -432,7 +432,11 @@ MST edges:
 
 Total MST weight: 26
 Execution time: 0 ms
-Prim
+```
+
+### Prim
+
+```text
 Algorithm: Prim's MST
 MST edges:
 0 1 4
@@ -445,29 +449,41 @@ MST edges:
 7 8 3
 8 9 2
 
-
 Total MST weight: 26
 Execution time: 0 ms
-Compilation
+```
+
+---
+
+## Compilation
 
 Compile manually from the repository root:
 
+```bash
 g++ assignment_03/driver/assignment3.cpp assignment_03/src/kruskal.cpp assignment_03/src/prim.cpp assignment_01/src/CSR.cpp -o assignment3.exe
-Execution
+```
+
+---
+
+## Execution
 
 On Windows:
 
+```bash
 .\assignment3.exe
+```
 
 The driver provides a menu for selecting:
 
-Kruskal's MST
-Prim's MST
-Exit
+- Kruskal's MST
+- Prim's MST
+- Exit
 
 Each algorithm provides a menu for selecting the required MST test file.
 
-Conclusion
+---
+
+## Conclusion
 
 Both Kruskal's and Prim's Minimum Spanning Tree algorithms were successfully implemented and tested using the same weighted undirected graph inputs.
 
