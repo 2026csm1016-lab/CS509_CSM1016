@@ -311,3 +311,166 @@ Both Bellman-Ford and Floyd-Warshall were successfully implemented and tested on
 The correctness checks passed, including the cross-check between Bellman-Ford and Floyd-Warshall for the 10-vertex and 100-vertex graphs. Negative-cycle detection was also verified, and a separate negative-edge test confirmed that Bellman-Ford correctly handles negative edge weights.
 
 The recorded execution times demonstrate the expected performance difference between the two algorithms, with Floyd-Warshall becoming significantly more expensive as the number of vertices increases because of its O(V³) time complexity.
+
+# Assignment 3
+
+## Algorithms
+
+Implementation of:
+
+- Kruskal's Minimum Spanning Tree
+- Prim's Minimum Spanning Tree
+
+Both algorithms use the same weighted undirected graph input and operate on the CSR representation after conversion.
+
+---
+
+## Algorithm Complexity
+
+### Kruskal
+
+**Time Complexity:** O(E log E)
+
+**Space Complexity:** O(V + E)
+
+### Prim
+
+Using a min-priority queue:
+
+**Time Complexity:** O(E log V)
+
+**Space Complexity:** O(V + E)
+
+---
+
+## Test Cases
+
+| Test File | Vertices | Edges |
+|---|---:|---:|
+| mst_10.txt | 10 | 15 |
+| mst_100.txt | 100 | 300 |
+| mst_10000.txt | 10000 | 30000 |
+| mst_50000.txt | 50000 | 150000 |
+| mst_100000.txt | 100000 | 300000 |
+
+---
+
+## Execution Time Results
+
+| Algorithm | Test File | Vertices | Edges | Expected MST Weight | Actual MST Weight | Execution Time | Status |
+|---|---|---:|---:|---:|---:|---:|---|
+| Kruskal | mst_10.txt | 10 | 15 | 26 | 26 | 0 ms | Pass |
+| Kruskal | mst_100.txt | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
+| Kruskal | mst_10000.txt | 10000 | 30000 | 202020 | 202020 | 9.278 ms | Pass |
+| Kruskal | mst_50000.txt | 50000 | 150000 | 1012305 | 1012305 | 46.603 ms | Pass |
+| Kruskal | mst_100000.txt | 100000 | 300000 | 2035020 | 2035020 | 102.698 ms | Pass |
+| Prim | mst_10.txt | 10 | 15 | 26 | 26 | 0 ms | Pass |
+| Prim | mst_100.txt | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
+| Prim | mst_10000.txt | 10000 | 30000 | 202020 | 202020 | 18.156 ms | Pass |
+| Prim | mst_50000.txt | 50000 | 150000 | 1012305 | 1012305 | 104.015 ms | Pass |
+| Prim | mst_100000.txt | 100000 | 300000 | 2035020 | 2035020 | 222.009 ms | Pass |
+
+---
+
+## Correctness Verification
+
+Both Kruskal's and Prim's algorithms were executed on the same graph inputs.
+
+The total MST weight produced by both algorithms was identical for every test case.
+
+| Test File | Kruskal MST Weight | Prim MST Weight | Result |
+|---|---:|---:|---|
+| mst_10.txt | 26 | 26 | Pass |
+| mst_100.txt | 1937 | 1937 | Pass |
+| mst_10000.txt | 202020 | 202020 | Pass |
+| mst_50000.txt | 1012305 | 1012305 | Pass |
+| mst_100000.txt | 2035020 | 2035020 | Pass |
+
+Different MST edge sets may occur when multiple valid MSTs exist, but the total MST weight remains the same.
+
+---
+
+## Timing Method
+
+The following operations are performed before the timer starts:
+
+- File reading
+- Input parsing
+- Adjacency-list construction
+- Conversion from adjacency list to CSR
+
+The timer measures only the execution of the selected MST algorithm.
+
+Output printing is also outside the timed region.
+
+---
+
+## Output Handling
+
+For smaller graphs, the selected MST edges are displayed.
+
+For larger graphs, the MST edges are omitted from the console output to avoid excessive output. The total MST weight and execution time are still displayed.
+
+---
+
+## Sample Output
+
+### Kruskal
+
+```text
+Algorithm: Kruskal's MST
+MST edges:
+4 5 1
+1 2 2
+5 6 2
+8 9 2
+2 3 3
+7 8 3
+0 1 4
+4 7 4
+2 5 5
+
+Total MST weight: 26
+Execution time: 0 ms
+Prim
+Algorithm: Prim's MST
+MST edges:
+0 1 4
+1 2 2
+2 3 3
+2 5 5
+5 4 1
+5 6 2
+4 7 4
+7 8 3
+8 9 2
+
+
+Total MST weight: 26
+Execution time: 0 ms
+Compilation
+
+Compile manually from the repository root:
+
+g++ assignment_03/driver/assignment3.cpp assignment_03/src/kruskal.cpp assignment_03/src/prim.cpp assignment_01/src/CSR.cpp -o assignment3.exe
+Execution
+
+On Windows:
+
+.\assignment3.exe
+
+The driver provides a menu for selecting:
+
+Kruskal's MST
+Prim's MST
+Exit
+
+Each algorithm provides a menu for selecting the required MST test file.
+
+Conclusion
+
+Both Kruskal's and Prim's Minimum Spanning Tree algorithms were successfully implemented and tested using the same weighted undirected graph inputs.
+
+All five required graph sizes produced the expected MST weights, and the total MST weights obtained from Kruskal's and Prim's algorithms matched for every test case.
+
+The execution times were recorded separately for both algorithms, with file reading, input parsing, CSR conversion, and output printing excluded from the timed region.
