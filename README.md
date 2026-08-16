@@ -6,6 +6,57 @@
 
 ---
 
+## Common Wrapper
+
+A common wrapper is provided at the repository level to run all assignments through a single interface.
+
+### Folder Structure
+
+```text
+common_wrapper/
+└── wrapper.cpp
+```
+
+### Compilation
+
+Compile the common wrapper from the repository root:
+
+```bash
+g++ -std=c++17 common_wrapper/wrapper.cpp -o common_wrapper.exe
+```
+
+### Execution
+
+On Windows:
+
+```bash
+.\common_wrapper.exe
+```
+
+The common wrapper provides options to run:
+
+- Assignment 1
+- Assignment 2
+- Assignment 3
+- Exit
+
+The wrapper compiles the selected assignment and then launches its dedicated driver.
+
+### Common Wrapper Menu
+
+```text
+=====================================
+       CS509 Laboratory Wrapper
+=====================================
+1. Assignment 1
+2. Assignment 2
+3. Assignment 3
+0. Exit
+
+Enter your choice:
+```
+
+---
 # Assignment 1
 
 ## Assignment
@@ -313,6 +364,9 @@ The correctness checks passed, including the cross-check between Bellman-Ford an
 The recorded execution times demonstrate the expected performance difference between the two algorithms, with Floyd-Warshall becoming significantly more expensive as the number of vertices increases because of its O(V³) time complexity.
 
 # Assignment 3
+## Assignment Mode
+
+Individual Task
 
 ## Algorithms
 
@@ -356,19 +410,18 @@ Using a min-priority queue:
 ---
 
 ## Execution Time Results
-
-| Algorithm | Test File | Vertices | Edges | Expected MST Weight | Actual MST Weight | Execution Time | Status |
-|---|---|---:|---:|---:|---:|---:|---|
-| Kruskal | mst_10.txt | 10 | 15 | 26 | 26 | 0 ms | Pass |
-| Kruskal | mst_100.txt | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
-| Kruskal | mst_10000.txt | 10000 | 30000 | 202020 | 202020 | 9.278 ms | Pass |
-| Kruskal | mst_50000.txt | 50000 | 150000 | 1012305 | 1012305 | 46.603 ms | Pass |
-| Kruskal | mst_100000.txt | 100000 | 300000 | 2035020 | 2035020 | 102.698 ms | Pass |
-| Prim | mst_10.txt | 10 | 15 | 26 | 26 | 0 ms | Pass |
-| Prim | mst_100.txt | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
-| Prim | mst_10000.txt | 10000 | 30000 | 202020 | 202020 | 18.156 ms | Pass |
-| Prim | mst_50000.txt | 50000 | 150000 | 1012305 | 1012305 | 104.015 ms | Pass |
-| Prim | mst_100000.txt | 100000 | 300000 | 2035020 | 2035020 | 222.009 ms | Pass |
+| Algorithm | Test File | Input Type | Vertices | Edges | Expected MST Weight | Actual MST Weight | Execution Time | Status |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| Kruskal | mst_10.txt | Weighted Undirected CSR | 10 | 15 | 26 | 26 | 0 ms | Pass |
+| Kruskal | mst_100.txt | Weighted Undirected CSR | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
+| Kruskal | mst_10000.txt | Weighted Undirected CSR | 10000 | 30000 | 202020 | 202020 | 9.278 ms | Pass |
+| Kruskal | mst_50000.txt | Weighted Undirected CSR | 50000 | 150000 | 1012305 | 1012305 | 46.603 ms | Pass |
+| Kruskal | mst_100000.txt | Weighted Undirected CSR | 100000 | 300000 | 2035020 | 2035020 | 102.698 ms | Pass |
+| Prim | mst_10.txt | Weighted Undirected CSR | 10 | 15 | 26 | 26 | 0 ms | Pass |
+| Prim | mst_100.txt | Weighted Undirected CSR | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
+| Prim | mst_10000.txt | Weighted Undirected CSR | 10000 | 30000 | 202020 | 202020 | 18.156 ms | Pass |
+| Prim | mst_50000.txt | Weighted Undirected CSR | 50000 | 150000 | 1012305 | 1012305 | 104.015 ms | Pass |
+| Prim | mst_100000.txt | Weighted Undirected CSR | 100000 | 300000 | 2035020 | 2035020 | 222.009 ms | Pass |
 
 ---
 
