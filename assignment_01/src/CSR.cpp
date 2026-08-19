@@ -1,4 +1,4 @@
-#include "csr.h"
+#include "CSR.h"
 
 #include <fstream>
 #include <iostream>

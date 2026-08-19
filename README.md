@@ -1,14 +1,66 @@
-# CS509 Assignment 1 
+# CS509 Laboratory Repository
 
-## Team Member
+## Student Details
 
-- CSM1016
+- Entry Number: CSM1016
+
+---
+
+## Repository Overview
+
+This repository contains the individual CS509 laboratory assignments.
+
+The assignments are implemented in C++ and include:
+
+- Assignment 1: GEMM and CSR
+- Assignment 2: Bellman-Ford and Floyd-Warshall
+- Assignment 3: Kruskal's MST and Prim's MST
+
+---
+
+## Language and Environment
+
+**Programming Language:** C++
+
+**Compiler:** g++
+
+**Standard:** C++17
+
+The programs are compiled and executed using the g++ compiler.
+
+---
+
+## Directory Structure
+
+```text
+CS509_CSM1016/
+│
+├── README.md
+│
+├── common_wrapper/
+│   └── wrapper.cpp
+│
+├── assignment_01/
+│   ├── driver/
+│   ├── src/
+│   └── tests/
+│
+├── assignment_02/
+│   ├── driver/
+│   ├── src/
+│   └── tests/
+│
+└── assignment_03/
+    ├── driver/
+    ├── src/
+    └── tests/
+```
 
 ---
 
 ## Common Wrapper
 
-A common wrapper is provided at the repository level to run all assignments through a single interface.
+A common wrapper is provided at the repository level to provide a single interface for accessing all assignments.
 
 ### Folder Structure
 
@@ -33,14 +85,14 @@ On Windows:
 .\common_wrapper.exe
 ```
 
-The common wrapper provides options to run:
+The common wrapper provides options to access:
 
 - Assignment 1
 - Assignment 2
 - Assignment 3
 - Exit
 
-The wrapper compiles the selected assignment and then launches its dedicated driver.
+The wrapper compiles the selected assignment and launches its dedicated driver.
 
 ### Common Wrapper Menu
 
@@ -57,6 +109,7 @@ Enter your choice:
 ```
 
 ---
+
 # Assignment 1
 
 ## Assignment
@@ -66,6 +119,36 @@ Implementation of:
 - GEMM (Simple)
 - GEMM (Blocking)
 - CSR (Compressed Sparse Row)
+
+---
+
+## Assignment Mode
+
+Individual Task
+
+---
+
+## Algorithms
+
+### GEMM (Simple)
+
+Standard triple nested-loop matrix multiplication.
+
+**Time Complexity:** O(M × K × N)
+
+### GEMM (Blocking)
+
+Matrix multiplication using blocking to improve cache utilization.
+
+**Time Complexity:** O(M × K × N)
+
+**Block Size:** 16
+
+### CSR
+
+Converts an adjacency-list graph into Compressed Sparse Row format.
+
+**Time Complexity:** O(V + E)
 
 ---
 
@@ -123,30 +206,6 @@ On Windows:
 ```bash
 wrapper.exe
 ```
-
----
-
-## Algorithms
-
-### GEMM (Simple)
-
-Standard triple nested-loop matrix multiplication.
-
-**Time Complexity:** O(M × K × N)
-
-### GEMM (Blocking)
-
-Matrix multiplication using blocking to improve cache utilization.
-
-**Time Complexity:** O(M × K × N)
-
-**Block Size:** 16
-
-### CSR
-
-Converts an adjacency-list graph into Compressed Sparse Row format.
-
-**Time Complexity:** O(V + E)
 
 ---
 
@@ -224,7 +283,7 @@ colIndex:
 
 # Assignment 2
 
-## Algorithms
+## Assignment
 
 Implementation of:
 
@@ -234,6 +293,12 @@ Implementation of:
 Bellman-Ford uses the CSR representation from Assignment 1.
 
 Floyd-Warshall uses a dense adjacency matrix directly.
+
+---
+
+## Assignment Mode
+
+Individual Task
 
 ---
 
@@ -363,12 +428,11 @@ The correctness checks passed, including the cross-check between Bellman-Ford an
 
 The recorded execution times demonstrate the expected performance difference between the two algorithms, with Floyd-Warshall becoming significantly more expensive as the number of vertices increases because of its O(V³) time complexity.
 
+---
+
 # Assignment 3
-## Assignment Mode
 
-Individual Task
-
-## Algorithms
+## Assignment
 
 Implementation of:
 
@@ -379,9 +443,17 @@ Both algorithms use the same weighted undirected graph input and operate on the 
 
 ---
 
-## Algorithm Complexity
+## Assignment Mode
+
+Individual Task
+
+---
+
+## Algorithms
 
 ### Kruskal
+
+Kruskal's algorithm sorts all graph edges by increasing weight and uses a Disjoint Set Union structure to add edges without creating cycles.
 
 **Time Complexity:** O(E log E)
 
@@ -389,11 +461,57 @@ Both algorithms use the same weighted undirected graph input and operate on the 
 
 ### Prim
 
-Using a min-priority queue:
+Prim's algorithm constructs the MST by repeatedly selecting the minimum-weight edge connecting the current MST to an unvisited vertex.
+
+A min-priority queue is used for selecting the next minimum-weight edge.
 
 **Time Complexity:** O(E log V)
 
 **Space Complexity:** O(V + E)
+
+---
+
+## Input Format
+
+The input is a weighted undirected graph represented using adjacency-list format.
+
+Each undirected edge is stored in both endpoint adjacency lists.
+
+The adjacency-list representation is converted to CSR before the selected MST algorithm is executed.
+
+The input files contain:
+
+- Number of vertices
+- Number of edges
+- Vertex identifier
+- Degree of the vertex
+- Neighbor vertex
+- Edge weight
+
+---
+
+## Folder Structure
+
+```text
+assignment_03/
+│
+├── driver/
+│   └── assignment3.cpp
+│
+├── src/
+│   ├── kruskal.cpp
+│   ├── kruskal.h
+│   ├── prim.cpp
+│   ├── prim.h
+│   └── generate_mst.cpp
+│
+└── tests/
+    ├── mst_10.txt
+    ├── mst_100.txt
+    ├── mst_10000.txt
+    ├── mst_50000.txt
+    └── mst_100000.txt
+```
 
 ---
 
@@ -409,25 +527,49 @@ Using a min-priority queue:
 
 ---
 
+## Compilation
+
+Compile manually from the repository root:
+
+```bash
+g++ -std=c++17 assignment_03/driver/assignment3.cpp assignment_03/src/kruskal.cpp assignment_03/src/prim.cpp assignment_01/src/CSR.cpp -o assignment3.exe
+```
+
+---
+
+## Execution
+
+On Windows:
+
+```bash
+.\assignment3.exe
+```
+
+The Assignment 3 driver provides a menu for selecting:
+
+- Kruskal's MST
+- Prim's MST
+- Exit
+
+Each algorithm provides a menu for selecting the required MST test file.
+
+---
+
 ## Execution Time Results
-| Algorithm | Test File | Input Type | Vertices | Edges | Expected MST Weight | Actual MST Weight | Execution Time | Status |
-|---|---|---|---:|---:|---:|---:|---:|---|
-| Kruskal | mst_10.txt | Weighted Undirected CSR | 10 | 15 | 26 | 26 | 0 ms | Pass |
-| Kruskal | mst_100.txt | Weighted Undirected CSR | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
-| Kruskal | mst_10000.txt | Weighted Undirected CSR | 10000 | 30000 | 202020 | 202020 | 9.278 ms | Pass |
-| Kruskal | mst_50000.txt | Weighted Undirected CSR | 50000 | 150000 | 1012305 | 1012305 | 46.603 ms | Pass |
-| Kruskal | mst_100000.txt | Weighted Undirected CSR | 100000 | 300000 | 2035020 | 2035020 | 102.698 ms | Pass |
-| Prim | mst_10.txt | Weighted Undirected CSR | 10 | 15 | 26 | 26 | 0 ms | Pass |
-| Prim | mst_100.txt | Weighted Undirected CSR | 100 | 300 | 1937 | 1937 | 0 ms | Pass |
-| Prim | mst_10000.txt | Weighted Undirected CSR | 10000 | 30000 | 202020 | 202020 | 18.156 ms | Pass |
-| Prim | mst_50000.txt | Weighted Undirected CSR | 50000 | 150000 | 1012305 | 1012305 | 104.015 ms | Pass |
-| Prim | mst_100000.txt | Weighted Undirected CSR | 100000 | 300000 | 2035020 | 2035020 | 222.009 ms | Pass |
+
+| File | V | E | Expected MST Weight | Kruskal Weight | Prim Weight | Kruskal Time | Prim Time | Equal? | Status |
+|---|---:|---:|---:|---:|---:|---:|---:|---|---|
+| mst_10.txt | 10 | 15 | 26 | 26 | 26 | 0 ms | 0 ms | Yes | Pass |
+| mst_100.txt | 100 | 300 | 1937 | 1937 | 1937 | 0 ms | 0 ms | Yes | Pass |
+| mst_10000.txt | 10000 | 30000 | 202020 | 202020 | 202020 | 9.278 ms | 18.156 ms | Yes | Pass |
+| mst_50000.txt | 50000 | 150000 | 1012305 | 1012305 | 1012305 | 46.603 ms | 104.015 ms | Yes | Pass |
+| mst_100000.txt | 100000 | 300000 | 2035020 | 2035020 | 2035020 | 102.698 ms | 222.009 ms | Yes | Pass |
 
 ---
 
 ## Correctness Verification
 
-Both Kruskal's and Prim's algorithms were executed on the same graph inputs.
+Both Kruskal's and Prim's algorithms were executed on the same weighted undirected graph inputs.
 
 The total MST weight produced by both algorithms was identical for every test case.
 
@@ -445,16 +587,20 @@ Different MST edge sets may occur when multiple valid MSTs exist, but the total 
 
 ## Timing Method
 
-The following operations are performed before the timer starts:
+For both MST algorithms, the input file is read and the adjacency-list representation is converted to CSR before the timer starts.
+
+The timer starts immediately before the selected MST algorithm and stops immediately after it finishes.
+
+The following operations are excluded from the measured execution time:
 
 - File reading
 - Input parsing
 - Adjacency-list construction
-- Conversion from adjacency list to CSR
+- CSR conversion
+- Output formatting
+- Output printing
 
-The timer measures only the execution of the selected MST algorithm.
-
-Output printing is also outside the timed region.
+The reported execution time therefore represents only the execution of the selected MST algorithm.
 
 ---
 
@@ -462,7 +608,12 @@ Output printing is also outside the timed region.
 
 For smaller graphs, the selected MST edges are displayed.
 
-For larger graphs, the MST edges are omitted from the console output to avoid excessive output. The total MST weight and execution time are still displayed.
+For larger graphs, the MST edges are omitted from the console output to avoid excessive output.
+
+The following are still displayed for every test:
+
+- Total MST weight
+- Execution time
 
 ---
 
@@ -508,34 +659,6 @@ Execution time: 0 ms
 
 ---
 
-## Compilation
-
-Compile manually from the repository root:
-
-```bash
-g++ assignment_03/driver/assignment3.cpp assignment_03/src/kruskal.cpp assignment_03/src/prim.cpp assignment_01/src/CSR.cpp -o assignment3.exe
-```
-
----
-
-## Execution
-
-On Windows:
-
-```bash
-.\assignment3.exe
-```
-
-The driver provides a menu for selecting:
-
-- Kruskal's MST
-- Prim's MST
-- Exit
-
-Each algorithm provides a menu for selecting the required MST test file.
-
----
-
 ## Conclusion
 
 Both Kruskal's and Prim's Minimum Spanning Tree algorithms were successfully implemented and tested using the same weighted undirected graph inputs.
@@ -543,3 +666,20 @@ Both Kruskal's and Prim's Minimum Spanning Tree algorithms were successfully imp
 All five required graph sizes produced the expected MST weights, and the total MST weights obtained from Kruskal's and Prim's algorithms matched for every test case.
 
 The execution times were recorded separately for both algorithms, with file reading, input parsing, CSR conversion, and output printing excluded from the timed region.
+
+---
+
+## Runtime Measurement Convention
+
+For all assignments, only algorithm execution time is reported.
+
+The following are excluded from timing:
+
+- Input file reading
+- Input parsing
+- Data structure construction
+- CSR conversion where applicable
+- Output formatting
+- Output printing
+
+The execution time is reported in milliseconds (ms).
