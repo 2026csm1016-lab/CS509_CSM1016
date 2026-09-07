@@ -683,3 +683,36 @@ The following are excluded from timing:
 - Output printing
 
 The execution time is reported in milliseconds (ms).
+
+# CS509 Assignment 4 
+
+Algorithms implemented:
+- Greedy Vertex Coloring using Welsh-Powell ordering
+- PageRank
+
+The Assignment 4 driver reuses the CSR conversion function from:
+`assignment_01/src/CSR.h` and `assignment_01/src/CSR.cpp`
+
+No CSR implementation is copied into Assignment 4.
+
+## Compile from repository root
+
+```bash
+g++ -std=c++17 -Iassignment_01/src assignment_04/driver/assignment4.cpp assignment_04/src/vertex_coloring.cpp assignment_04/src/pagerank.cpp assignment_01/src/CSR.cpp -o assignment4.exe
+```
+
+## Run
+
+```bash
+./assignment4.exe
+```
+
+On Windows:
+
+```text
+.\\assignment4.exe
+```
+
+## Timing
+
+Only the selected algorithm is timed. Input reading, CSR conversion, and output printing are outside the timed section.

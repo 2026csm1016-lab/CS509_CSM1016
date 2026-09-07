@@ -89,6 +89,34 @@ void compileAssignment3()
 
     system(".\\assignment3.exe");
 }
+// ==================== COMPILE ASSIGNMENT 4 ====================
+
+void compileAssignment4()
+{
+    cout << "\nCompiling Assignment 4...\n";
+
+    int result = system(
+        "g++ -std=c++17 "
+        "-I\"assignment_04/src\" "
+        "assignment_04/driver/assignment4.cpp "
+        "assignment_04/src/vertex_coloring.cpp "
+        "assignment_04/src/pagerank.cpp "
+        "assignment_01/src/CSR.cpp "
+        "-o assignment4.exe"
+    );
+
+    if (result != 0)
+    {
+        cout << "\nError: Assignment 4 compilation failed.\n";
+        return;
+    }
+
+    cout << "Assignment 4 compiled successfully.\n";
+
+    cout << "\nStarting Assignment 4...\n\n";
+
+    system(".\\assignment4.exe");
+}
 
 
 // ==================== MAIN ====================
@@ -105,6 +133,7 @@ int main()
         cout << "1. Assignment 1\n";
         cout << "2. Assignment 2\n";
         cout << "3. Assignment 3\n";
+        cout << "4. Assignment 4\n";
         cout << "0. Exit\n";
 
         cout << "\nEnter your choice: ";
@@ -122,6 +151,10 @@ int main()
         {
             compileAssignment3();
         }
+        else if (choice == 4)
+        {
+            compileAssignment4();
+        }   
         else if (choice == 0)
         {
             cout << "\nExiting Program...\n";
